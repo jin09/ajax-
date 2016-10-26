@@ -47,6 +47,10 @@ function loadData() {
 
     var wikiUrl = 'http://en.wikipedia.org/w/api.php?format=json&action=opensearch&callback=wikiCallback&search="'+cityString+'"';
 
+    var wikiRequestTimeout = setTimeout(function(){
+    	$wikiElem.text("Failed to load wikipedia resources !!");
+    },2000);
+
     $.ajax({
     	url : wikiUrl,
     	dataType : "jsonp",
@@ -59,6 +63,7 @@ function loadData() {
     			$wikiElem.append("<li><a href='" + url +"'>"
     				+ articleStr + '</a></li>');
     		}
+    		clearTimeout(wikiRequestTimeout);
     	}
     });
     return false;
