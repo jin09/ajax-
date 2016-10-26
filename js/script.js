@@ -39,6 +39,8 @@ function loadData() {
     			'<p>' + article.snippet+'</p>'
     			+'</li>');
     	}
+    }).error(function(e){
+    	$nytHeaderElem.text("SOMETHING WENT WRONG !! NEW YORK TIMES ARTICLES COULD NOT BE LOADED");
     });
 
     return false;
